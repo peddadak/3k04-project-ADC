@@ -3,14 +3,14 @@
 #include "Log.h"
     class LogManager{
         public: 
-            void generateLogReport(int adcID, int loginID); 
+            Log generateLogReport(int adcID, int credentials); 
             void storeLogADC(int adcId, char medicineLog, int time );
             void storeLogAccess(int adcID, int loginID, int time); 
         private:
             int adcID; 
             int loginID; 
             int time; 
-            Log storedLogs[100];
+            Log ADCstoredLogs[100];
             
 
 
