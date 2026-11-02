@@ -1,11 +1,15 @@
 #ifndef LOGMANAGER
 #define LOGMANAGER
+#include "ADCInputHandler.h"
     class LogManager{
         public: 
-            LogManager(int adcID, int loginID); 
+            void generateLogReport(int adcID, int loginID); 
+            void storeLogADC(int adcId, char medicineLog, int time );
+            void storeLogAccess(int adcID, int loginID, int time); 
         private:
             int adcID; 
             int loginID; 
+            int time; 
 
 
     };  

@@ -2,8 +2,8 @@
 #define MANUALOVERRIDE
     class ManualOverride{
         public: 
-            ManualOverride toggleManualOverrideADC(int adcID, int mode);
-            ManualOverride toggleManualOverrideAlarm();
+            void toggleManualOverrideADC(int adcID, int mode);
+            void toggleManualOverrideAlarm();
 
         private:
             int adcID; 

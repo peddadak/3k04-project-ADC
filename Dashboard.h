@@ -2,7 +2,7 @@
 #define DASHBOARD
     class Dashboard{
         public: 
-            Dashboard generateDashboard(bool credentials);
+            void generateDashboard (bool credentials);
         private:
           bool credentials; 
 

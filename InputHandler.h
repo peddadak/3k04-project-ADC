@@ -3,9 +3,9 @@
 class InputHandler
 {
     public: 
-        String getInput(); 
+        char getInput(); 
     private: 
-        
+
 
 };
 
