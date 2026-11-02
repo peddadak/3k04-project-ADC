@@ -1,6 +1,6 @@
 #ifndef LOGMANAGER
 #define LOGMANAGER
-#include "ADCInputHandler.h"
+#include "Log.h"
     class LogManager{
         public: 
             void generateLogReport(int adcID, int loginID); 
@@ -10,7 +10,8 @@
             int adcID; 
             int loginID; 
             int time; 
-            int registeredIDs[100][2];
+            Log storedLogs[100];
+            
 
 
     };  
