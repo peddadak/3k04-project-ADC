@@ -10,6 +10,7 @@
             int adcID; 
             int loginID; 
             int time; 
+            int registeredIDs[100][2];
 
 
     };  
