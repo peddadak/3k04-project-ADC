@@ -6,7 +6,7 @@
         private:
             int adcID; 
             int loginID; 
-            int registeredIDs[100][2]
+            int registeredIDs[100][2];
 
 
     };  
