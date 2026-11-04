@@ -2,9 +2,12 @@
 #define LOGIN
     class Login{
         public: 
-           bool checkLoginCreds();
+            Login();
+            int checkLoginCreds(int loginID);
+            void addRegisteredID(int loginID, int role);
 
         private:
+            int numOfRegisteredIDs;
             int registeredIDs[100][2];
 
 
