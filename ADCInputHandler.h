@@ -5,14 +5,13 @@ class ADCInputHandler
 {
     public: 
         int getStatus(int adcID); 
-        void getMedicineLog(int adcID);
+        int getMedicineLog(int adcID);
         int getInventory(int adcID);
     private: 
-        int id; 
-        int status; 
-
-
-
+        int ADCids[100]; 
+        int status[100]; 
+        int medicineLog[100];
+        int inventory[100];
 
 
 
