@@ -1,9 +1,9 @@
 #include "Dashboard.h"
 #include <iostream>
 using namespace std;
-  Dashboard generateDashboard(bool credentials){
-
-
+  void Dashboard::generateDashboard  (bool credentials){
+    while(credentials){
+        
 
 
   };

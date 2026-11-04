@@ -5,6 +5,7 @@ class InputHandler
     public: 
         char getInput(); 
     private: 
+        char input;
 
 
 };

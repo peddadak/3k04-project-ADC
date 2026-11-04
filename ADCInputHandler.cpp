@@ -1,17 +1,19 @@
 #include "ADCInputHandler.h"
 #include <iostream>
 using namespace std;
- int::getStatus(int adcID){
+ int ADCInputHandler::getStatus(int adcID){
 
 
 
 
  };
- void::printMedicineLog(int adcID){
+ void ADCInputHandler::getMedicineLog(int adcID){
 
 
 
 
  };
+int ADCInputHandler::getInventory(int adcID){
 
+};
 
