@@ -4,7 +4,7 @@
 #include "InputHandler.h"
     class Dashboard{
         public: 
-            void generateDashboard (bool credentials, char option);
+             void generateDashboard (bool credentials, int adcStatus, int adcID, int ADCMode, int alarmStatus, int Inventory);
         private:
           bool credentials; 
 
