@@ -3,9 +3,9 @@
 class ADCController
 {
     public: 
-        setManualMode(int i)
-        openDoors()
-        closeDoors()
+       void setManualMode(int i);
+        void openDoors();
+       void closeDoors();
 
     private: 
         int mode; 
