@@ -1,10 +1,9 @@
 #ifndef DASHBOARD
 #define DASHBOARD
-#include "ADCInputHandler.h"
-#include "InputHandler.h"
+#include "AlarmController.h"
     class Dashboard{
         public: 
-             void generateDashboard (bool credentials, int adcStatus, int adcID, int ADCMode, int alarmStatus, int Inventory);
+             void generateDashboard (bool credentials, int adcStatus, int adcID, int ADCMode, AlarmController& alarmStatus, int Inventory,char userInput);
         private:
           bool credentials; 
 
