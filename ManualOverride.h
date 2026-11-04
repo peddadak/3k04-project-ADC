@@ -1,14 +1,24 @@
-#ifndef MANUALOVERRIDE
-#define MANUALOVERRIDE
-    class ManualOverride{
-        public: 
-            void toggleManualOverrideADC(int adcID, int mode);
-            void toggleManualOverrideAlarm();
+#ifndef MANUAL_OVERRIDE_H
+#define MANUAL_OVERRIDE_H
 
-        private:
-            int adcID; 
-            int mode; 
+#include <map>
 
+// Module: Manual Override
+// Secret: how override settings are stored.
+class ManualOverride {
+public:
+    static const int OFF = 0;   // ADC runs normally
+    static const int ON  = 1;   // ADC under manual override
 
-    };  
-#endif 
+    void toggleManualOverrideADC(int adcID, int mode);
+    void toggleManualOverrideAlarm();
+
+    int getADCMode(int adcID) const;
+    bool isAlarmOverridden() const;
+
+private:
+    std::map<int, int> adcMode;     // override mode for each ADC
+    bool alarmOverride = false;     // true = alarm manually silenced
+};
+
+#endif
