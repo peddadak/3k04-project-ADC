@@ -1,34 +1,28 @@
 #include "Log.h"
 #include <iostream>
 using namespace std;
-Log::Log(){
+template <typename E>
+Log<E>::Log(){
     numOfEntries = 0;
 }
-Log::Log(int adcID, int loginID, int time){
-    addLogLoginEntry(adcID, loginID, time);
+template <typename E>
+Log<E>::Log(int adcID, int loginID, int time){
+    addLogEntry(adcID, loginID, time);
 }
-Log::Log(int adcID, int time, char medicineLog){
-    addLogMedicineEntry(adcID, time, medicineLog);
-}
-void Log::addLogLoginEntry(int adcID, int loginID, int time){
-    entries[numOfEntries][0] = adcID;
-    entries[numOfEntries][2] = loginID;
-    entries[numOfEntries][3] = time;
+template <typename E>
+void Log<E>::addLogEntry(E value){
+    entries[numOfEntries] = value;
     numOfEntries++;
 }
-void Log::addLogMedicineEntry(int adcID, int time, char medicineLog){
-    entries[numOfEntries][0] = adcID;
-    entries[numOfEntries][1] = medicineLog;
-    entries[numOfEntries][3] = time;
-    numOfEntries++;
-}
-int* Log::getLogEntry(int index){
+
+template <typename E>
+E Log<E>::getLogEntry(int index){
     if (index < numOfEntries){
         return entries[index];
     }
     else{
         cout << "Invalid log entry index." << endl;
-        return nullptr;
+        return -1; // Return -1 to indicate an invalid index
     }
 }
 
