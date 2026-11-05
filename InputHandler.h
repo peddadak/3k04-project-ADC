@@ -1,5 +1,5 @@
-#ifndef ADCINPUTHANDLER
-#define ADCINPUTHANDLER
+#ifndef INPUTHANDLER
+#define INPUTHANDLER
 class InputHandler
 {
     public: 
