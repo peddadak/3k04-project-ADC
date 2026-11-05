@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string> 
 using namespace std;
-  void Dashboard::generateDashboard(bool credentials, int adcID, int adcMode, AlarmController& alarmStatus, LogManager& logManager, char UserInput, int LoginID, int time){
+  void Dashboard::generateDashboard(int credentials, int adcID, int adcMode, AlarmController& alarmStatus, LogManager& logManager, char UserInput, int LoginID, int time){
       string status; 
       string mode; 
       string alarm; 
@@ -36,18 +36,18 @@ using namespace std;
 
             if(adcMode == 0){
               mode ="Automatic";
-          }
-          else {
-              mode = "Manual"; 
-          }
+            }
+            else {
+                mode = "Manual"; 
+            }
+            if(alarmStatus.isAlarmActive(adcID)){// Check the alarm status for the ADC 
+                            alarm = "On";
+                }             
+                        else{
+                            alarm = "Off";
+                        }
 
-
-          if(alarmStatus.isAlarmActive(adcID)){// Check the alarm status for the ADC 
-              alarm = "On";
-          }
-          else{
-              alarm = "Off";
-          }
+                
             cout << " ******Dashboard Generated******" << endl;
             cout<<"ADC_Information"<<endl;
             cout<<"********************************"<<endl; 
@@ -55,6 +55,9 @@ using namespace std;
             cout<<"ADC_Status:"<<status<<endl; 
             cout <<"ADC_Mode:"<<mode<<endl; 
             cout <<"Alarm_Status:"<<alarm<<endl; 
+
+
+            
 
             if(inventoryLog.getNumOfEntries() > 0){ // Similar to status
              recentInventory = inventoryLog.getLogEntry(inventoryLog.getNumOfEntries() - 1);
@@ -64,8 +67,10 @@ using namespace std;
           else{
              cout<<"Inventory: No data received from ADC yet"<<endl; 
           }
-           
+           if(alarmStatus.isAlarmActive(adcID)){// Check the alarm status for the ADC 
+                        cout << "THERE IS AN ACTIVE FAULT AT THIS ADC PLEASE RESOLVE THE ISSUE!" << endl;
 
+           }
             cout<<"********************************"<<endl; 
               break;
           case '2':

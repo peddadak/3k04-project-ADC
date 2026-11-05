@@ -32,7 +32,7 @@ int main() {
    int cred =  login.checkLoginCreds(loginID); // Check login credentials
     // Generate a status log report
     logManager.storeLogADC(adcID, 1, "MedicineA", 1234567890, 50); // Store a sample log entry
-    logManager.storeLogADC(adcID, 0, "MedicineB", 1234567891, 30); // Store another sample log entry
+    logManager.storeLogADC(adcID, 1, "MedicineB", 1234567891, 30); // Store another sample log entry
     //logManager.storeLogADC(adcID, 1, "MedicineC", 1234567892, 20); // Store another sample log entry
     // Log<int> statusLogReport = logManager.generateStatusLogReport(adcID, loginID, credentials);
     alarmController.registerADC(adcID); // Register the ADC with the AlarmController
@@ -41,7 +41,7 @@ int main() {
         alarmController.report(adcID, lastStatus); // Report the last status to the AlarmController
     }
     // Generate a dashboard
-    char userInput = '1'; // Example user input for generating dashboard
+    char userInput = '2'; // Example user input for generating dashboard
     dashboard.generateDashboard(cred, adcID, 0, alarmController, logManager, userInput, loginID, 1234567890);
 
     return 0;
