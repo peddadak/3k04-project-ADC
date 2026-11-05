@@ -26,8 +26,10 @@ void Login::addRegisteredID(int loginID, int role){
           registeredIDs[numOfRegisteredIDs][1] = role;
           numOfRegisteredIDs++;
      }
+     else{
+           cout << "Maximum number of registered IDs reached." << endl;
+     }
      
-     cout << "Maximum number of registered IDs reached." << endl;
 }
 
 

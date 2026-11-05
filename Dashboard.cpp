@@ -2,16 +2,17 @@
 #include <iostream>
 #include <string> 
 using namespace std;
-  void Dashboard::generateDashboard(bool credentials, int adcStatus, int adcID, int adcMode, AlarmController& alarmStatus, ADCInputHandler& adcInput, char UserInput){
+  void Dashboard::generateDashboard(bool credentials, int adcStatus, int adcID, int adcMode, AlarmController& alarmStatus, LogManager& adcInput, char UserInput, int LoginID){
       string status; 
       string mode; 
       string alarm; 
       int recentInventory;
-      if(credentials){
+      if(credentials!= -1){
+         Log <int> inventoryLog = adcInput.generateInventoryLogReport(adcID, LoginID, credentials); // Variables to store the logs for inventory, status, and medicine 
+         Log<char*> medicineLog = adcInput.generateMedicineLogReport(adcID, LoginID, credentials);
+         Log<int> statusLog = adcInput.generateStatusLogReport(adcID, LoginID, credentials); 
         switch(UserInput){
-          Log <int> inventoryLog = adcInput.getInventory(adcID); // Variables to store the logs for inventory, status, and medicine 
-          Log<char*> medicineLog = adcInput.getMedicineLog(adcID);
-          Log<int> statusLog = adcInput.getStatus(adcID); 
+         
           case '1':
            if(statusLog.getNumOfEntries() > 0){// check if there are any entries in the log 
                 int lastStatus = statusLog.getLogEntry(statusLog.getNumOfEntries() - 1);// Get the last entry for the recent data 
@@ -30,18 +31,13 @@ using namespace std;
             }
 
 
-          if(inventoryLog.getNumOfEntries() > 0){ // Similar to status
-             recentInventory = inventoryLog.getLogEntry(inventoryLog.getNumOfEntries() - 1);
-         }
-          else{
-             recentInventory = 0; 
-          }
+          
 
             if(adcMode == 0){
-              mode ="Manual";
+              mode ="Automatic";
           }
           else {
-              mode = "Automatic"; 
+              mode = "Manual"; 
           }
 
 
@@ -58,7 +54,17 @@ using namespace std;
             cout<<"ADC_Status:"<<status<<endl; 
             cout <<"ADC_Mode:"<<mode<<endl; 
             cout <<"Alarm_Status:"<<alarm<<endl; 
-            cout<<"Inventory:" << recentInventory <<endl; 
+
+            if(inventoryLog.getNumOfEntries() > 0){ // Similar to status
+             recentInventory = inventoryLog.getLogEntry(inventoryLog.getNumOfEntries() - 1);
+             cout<<"Inventory:" << recentInventory <<endl; 
+
+         }
+          else{
+             cout<<"Inventory: No data received from ADC yet"<<endl; 
+          }
+           
+
             cout<<"********************************"<<endl; 
               break;
           case '2':

@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 Log<int> LogManager::generateStatusLogReport(int adcID, int loginID, int credentials){
-   if (credentials != 0){
+   if (credentials != -1){
         return ADCstoredLogs[adcID][0];
     }
     else{
@@ -12,7 +12,7 @@ Log<int> LogManager::generateStatusLogReport(int adcID, int loginID, int credent
     
 }
 Log<int> LogManager::generateInventoryLogReport(int adcID, int loginID, int credentials){
-   if (credentials != 0){
+   if (credentials != -1){
         return ADCstoredLogs[adcID][1];
     }
     else{
@@ -23,7 +23,7 @@ Log<int> LogManager::generateInventoryLogReport(int adcID, int loginID, int cred
 }
 
 Log<int> LogManager::generateTimeLogReport(int adcID, int loginID, int credentials){
-   if (credentials != 0){
+   if (credentials != -1){
         return ADCstoredLogs[adcID][2];
     }
     else{
@@ -34,7 +34,7 @@ Log<int> LogManager::generateTimeLogReport(int adcID, int loginID, int credentia
 }
 
 Log<char*> LogManager::generateMedicineLogReport(int adcID, int loginID, int credentials){
-   if (credentials != 0){
+   if (credentials != -1){
         return ADCstoredMedicineLogs[adcID][0];
     }
     else{
@@ -44,7 +44,7 @@ Log<char*> LogManager::generateMedicineLogReport(int adcID, int loginID, int cre
     
 }
 Log<int> LogManager::generateLoginLogReport(int adcID, int loginID, int credentials){
-   if (credentials != 0){
+   if (credentials != -1){
         return ADCstoredLogs[adcID][3];
     }
     else{

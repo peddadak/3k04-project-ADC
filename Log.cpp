@@ -1,14 +1,12 @@
 #include "Log.h"
 #include <iostream>
+#include <stdexcept>
 using namespace std;
 template <typename E>
 Log<E>::Log(){
     numOfEntries = 0;
 }
-template <typename E>
-Log<E>::Log(int adcID, int loginID, int time){
-    addLogEntry(adcID, loginID, time);
-}
+
 template <typename E>
 void Log<E>::addLogEntry(E value){
     entries[numOfEntries] = value;
@@ -21,11 +19,14 @@ E Log<E>::getLogEntry(int index){
         return entries[index];
     }
     else{
-        cout << "Invalid log entry index." << endl;
-        return -1; // Return -1 to indicate an invalid index
+       
+        throw std::runtime_error("Invalid log entry index." );
+
+      
     }
 }
-
+template class Log<int>; 
+template class Log<char*>; 
     
 
 

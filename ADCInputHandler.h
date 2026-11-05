@@ -11,9 +11,11 @@ class ADCInputHandler
         Log<char*> getMedicineLog(int adcID);
         Log<int> getInventory(int adcID);
         int getNumOfADCs() { return numOfADCs; }
+        Log<int> status[100];  //For testing
     private: 
         int numOfADCs;
-        Log<int> status[100]; 
+        
+      
         Log<char*> medicineLog[100];
         Log<int> inventory[100];
 
