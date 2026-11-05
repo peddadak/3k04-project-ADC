@@ -15,18 +15,18 @@ int Login::checkLoginCreds(int loginID){
 }
 
 void Login::addRegisteredID(int loginID, int role){
-     if (numOfRegisteredIDs < 100){
-          registeredIDs[numOfRegisteredIDs][0] = loginID;
-          registeredIDs[numOfRegisteredIDs][1] = role;
-          numOfRegisteredIDs++;
-     }
      for (int i = 0; i < numOfRegisteredIDs; i++){
           if(registeredIDs[i][0] == loginID){
                cout << "Login ID already registered." << endl;
                return;
           }
      }
-
+     if (numOfRegisteredIDs < 100){
+          registeredIDs[numOfRegisteredIDs][0] = loginID;
+          registeredIDs[numOfRegisteredIDs][1] = role;
+          numOfRegisteredIDs++;
+     }
+     
      cout << "Maximum number of registered IDs reached." << endl;
 }
 

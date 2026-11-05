@@ -4,7 +4,7 @@
         public: 
             Login();
             int checkLoginCreds(int loginID);
-            void addRegisteredID(int loginID, int role);
+            void addRegisteredID(int loginID, int role); // test func assume come preloaded
 
         private:
             int numOfRegisteredIDs;
