@@ -3,13 +3,14 @@
 class ADCController
 {
     public: 
-       void setManualMode(int i);
+        void setManualMode(int i);
         void openDoors();
-       void closeDoors();
+        void closeDoors();
+        int getMode() { return mode; }
 
     private: 
-        int mode; 
-
+        int mode = 0; // 0 = automatic, 1 = manual
+        
 
 
 };
