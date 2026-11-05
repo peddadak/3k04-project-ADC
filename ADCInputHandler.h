@@ -1,17 +1,21 @@
 #ifndef ADCINPUTHANDLER
 #define ADCINPUTHANDLER
+#include "Log.h"
 
 class ADCInputHandler
 {
     public: 
-        int getStatus(int adcID); 
-        int getMedicineLog(int adcID);
-        int getInventory(int adcID);
+        ADCInputHandler();
+        void addADC() { numOfADCs++; } // test func assume come preloaded
+        Log<int> getStatus(int adcID); 
+        Log<char*> getMedicineLog(int adcID);
+        Log<int> getInventory(int adcID);
+        int getNumOfADCs() { return numOfADCs; }
     private: 
-        int ADCids[100]; 
-        int status[100]; 
-        int medicineLog[100];
-        int inventory[100];
+        int numOfADCs;
+        Log<int> status[100]; 
+        Log<char*> medicineLog[100];
+        Log<int> inventory[100];
 
 
 
