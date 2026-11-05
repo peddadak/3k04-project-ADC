@@ -27,14 +27,18 @@ int main() {
 
 
     login.addRegisteredID(loginID, credentials); // Add a registered login ID for testing
+    login.addRegisteredID(456, 2); // Add another registered login ID for testing
     adcInputHandler.addADC(); // Add an ADC for testing
    int cred =  login.checkLoginCreds(loginID); // Check login credentials
     // Generate a status log report
-    Log<int> statusLogReport = logManager.generateStatusLogReport(adcID, loginID, credentials);
+    logManager.storeLogADC(adcID, 1, "MedicineA", 1234567890, 50); // Store a sample log entry
+    logManager.storeLogADC(adcID, 0, "MedicineB", 1234567891, 30); // Store another sample log entry
+    //logManager.storeLogADC(adcID, 1, "MedicineC", 1234567892, 20); // Store another sample log entry
+    // Log<int> statusLogReport = logManager.generateStatusLogReport(adcID, loginID, credentials);
     
     // Generate a dashboard
     char userInput = '2'; // Example user input for generating dashboard
-    dashboard.generateDashboard(cred, 1, adcID, 0, alarmController, adcInputHandler, userInput);
+    dashboard.generateDashboard(cred, adcID, 0, alarmController, logManager, userInput, loginID, 1234567890);
 
     return 0;
 }

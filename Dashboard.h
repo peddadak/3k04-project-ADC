@@ -4,7 +4,7 @@
 #include "LogManager.h"
     class Dashboard{
         public: 
-             void generateDashboard (bool credentials, int adcStatus, int adcID, int ADCMode, AlarmController& alarmStatus, LogManager& adcInput, char userInput, int LoginID);
+             void generateDashboard (bool credentials, int adcID, int ADCMode, AlarmController& alarmStatus, LogManager& adcInput, char userInput, int LoginID, int time);
         private:
           bool credentials; 
 

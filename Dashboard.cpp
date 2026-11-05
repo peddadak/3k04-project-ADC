@@ -2,15 +2,16 @@
 #include <iostream>
 #include <string> 
 using namespace std;
-  void Dashboard::generateDashboard(bool credentials, int adcStatus, int adcID, int adcMode, AlarmController& alarmStatus, LogManager& adcInput, char UserInput, int LoginID){
+  void Dashboard::generateDashboard(bool credentials, int adcID, int adcMode, AlarmController& alarmStatus, LogManager& logManager, char UserInput, int LoginID, int time){
       string status; 
       string mode; 
       string alarm; 
       int recentInventory;
       if(credentials!= -1){
-         Log <int> inventoryLog = adcInput.generateInventoryLogReport(adcID, LoginID, credentials); // Variables to store the logs for inventory, status, and medicine 
-         Log<char*> medicineLog = adcInput.generateMedicineLogReport(adcID, LoginID, credentials);
-         Log<int> statusLog = adcInput.generateStatusLogReport(adcID, LoginID, credentials); 
+        
+         Log <int> inventoryLog = logManager.generateInventoryLogReport(adcID, LoginID, credentials); // Variables to store the logs for inventory, status, and medicine 
+         Log<char*> medicineLog = logManager.generateMedicineLogReport(adcID, LoginID, credentials);
+         Log<int> statusLog = logManager.generateStatusLogReport(adcID, LoginID, credentials); 
         switch(UserInput){
          
           case '1':
@@ -68,11 +69,14 @@ using namespace std;
             cout<<"********************************"<<endl; 
               break;
           case '2':
+              logManager.storeLogAccess(adcID, LoginID, time); // Store a sample access log entry
               cout << "******Log Report******" << endl;
               // Need to see how the medicine log function is implemented
               if(medicineLog.getNumOfEntries() >0){
-                for(int i = 0; i < medicineLog.getNumOfEntries(); i++){
-                    cout << i + 1 << ". " << medicineLog.getLogEntry(i) << endl; 
+                for(int i = medicineLog.getNumOfEntries()-1; i >= 0; i--){ // latest entry first
+                    if (statusLog.getLogEntry(i) == 1) {
+                        cout << medicineLog.getLogEntry(i) << " Quantity: " << inventoryLog.getLogEntry(i)  << endl; 
+                    }
                 }
               }
               else{
