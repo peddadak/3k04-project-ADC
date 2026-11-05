@@ -1,13 +1,34 @@
 #include "LogManager.h"
 #include <iostream>
 using namespace std;
-Log<int> LogManager::generateLogReport(int adcID, int loginID, int credentials){
+Log<int> LogManager::generateStatusLogReport(int adcID, int loginID, int credentials){
    if (credentials != 0){
         return ADCstoredLogs[adcID][0];
     }
     else{
             cout << "Invalid credentials. Cannot generate log report." << endl;
-            return ADCstoredLogs[0][0]; // Return an empty log or handle the error as needed
+            return Log<int>(); // Return an empty log or handle the error as needed
+    }
+    
+}
+Log<int> LogManager::generateInventoryLogReport(int adcID, int loginID, int credentials){
+   if (credentials != 0){
+        return ADCstoredLogs[adcID][1];
+    }
+    else{
+            cout << "Invalid credentials. Cannot generate log report." << endl;
+            return Log<int>(); // Return an empty log or handle the error as needed
+    }
+    
+}
+
+Log<int> LogManager::generateTimeLogReport(int adcID, int loginID, int credentials){
+   if (credentials != 0){
+        return ADCstoredLogs[adcID][2];
+    }
+    else{
+            cout << "Invalid credentials. Cannot generate log report." << endl;
+            return Log<int>(); // Return an empty log or handle the error as needed
     }
     
 }
@@ -19,6 +40,16 @@ Log<char*> LogManager::generateMedicineLogReport(int adcID, int loginID, int cre
     else{
             cout << "Invalid credentials. Cannot generate log report." << endl;
             return ADCstoredMedicineLogs[0][0]; // Return an empty log or handle the error as needed
+    }
+    
+}
+Log<int> LogManager::generateLoginLogReport(int adcID, int loginID, int credentials){
+   if (credentials != 0){
+        return ADCstoredLogs[adcID][3];
+    }
+    else{
+            cout << "Invalid credentials. Cannot generate log report." << endl;
+            return Log<int>(); // Return an empty log or handle the error as needed
     }
     
 }

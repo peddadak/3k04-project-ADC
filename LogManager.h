@@ -3,7 +3,10 @@
 #include "Log.h"
     class LogManager{
         public: 
-            Log<int> generateLogReport(int adcID, int loginID, int ceredentials); 
+            Log<int> generateStatusLogReport(int adcID, int loginID, int ceredentials); 
+            Log<int> generateInventoryLogReport(int adcID, int loginID, int ceredentials);
+            Log<int> generateTimeLogReport(int adcID, int loginID, int ceredentials); 
+            Log<int> generateLoginLogReport(int adcID, int loginID, int ceredentials);  
             Log<char*> generateMedicineLogReport(int adcID, int loginID, int credentials);
             void storeLogADC(int adcId, int status, char* medicineID, int time, int inventory);
             void storeLogAccess(int adcID, int loginID, int time); 
